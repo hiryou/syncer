@@ -1,0 +1,40 @@
+INSTALLATION
+------------
+Please consult README prior to this installation guide
+
+1. Copy this folder to your path of choice. This document will assume it is 
+~/scripts/syncer.linux/
+
+2. Add an alias referencing syncer2.0.sh to your ~/.bash_aliases (or .profile, 
+.zsh_profile, etc depending on your shell)
+    alias SYNC2="bash ~/scripts/syncer.linux/syncer2.0.sh"
+    
+3. Open syncer2.0.sh and fill in your credentials at the header of the file. Below is an example:
+    USERNAME="hiryou"
+    REMOTEHOST="68.215.56.87"       # experiences show that host IP works better than host name
+    REMOTEDIR="/usr/local/dev_box/"
+    EXCLUDED=".git .svn .tmp"
+    
+    * Any directory will be synced as a direct child of the $REMOTEDIR in $REMOTEHOST.
+    
+4. Restart your shell and you should be good to go
+    $ source ~/.bash_aliases
+    
+SYNOPSIS
+--------
+    $ SYNC2 [OPTIONS]
+    
+OPTIONS
+-------
+    start       Start syncing current directory
+    restart
+    stop        Stop syncing current directory
+    status      Check if current directory is being synced or not
+    list        List all directories being synced by SYNC2
+    
+EXAMPLE
+-------
+    # Assume the credentials above
+    $ cd ~/school/projects/x-men
+    $ SYNC2 start
+    # ~/school/projects/x-men will be synced to 68.215.56.87:/usr/local/dev_box/x-men

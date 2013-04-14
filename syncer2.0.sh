@@ -1,6 +1,13 @@
 #! /bin/sh
 # Run SYNC2 as daemon/service
 
+## FILL IN YOUR CREDENTIALS
+USERNAME="hiryou"
+REMOTEHOST="68.215.56.87"
+REMOTEDIR="/usr/local/dev_box/"
+EXCLUDED=".git .svn .tmp"
+
+## DON'T CHANGE ANYTHING BELOW THIS LINE
 PROCNAME="SYNC2"
 PID=0
 LIST=()
@@ -73,7 +80,7 @@ _sync2exec() {
     # main program
     while true
     do
-        /usr/bin/ruby $FULLPATH/syncer2.0 -s -r -u lnguyen -H 68.67.148.128 -d '/usr/local/adnxs/' -e '.git'
+        /usr/bin/ruby $FULLPATH/syncer2.0 -s -r -u $USERNAME -H $REMOTEHOST -d $REMOTEDIR -e $EXCLUDED
         #echo -en "\n*** Syncing in progress, Ctrl-C to stop ***\n"
         sleep 3
     done &
